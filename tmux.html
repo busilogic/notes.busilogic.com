@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-08-19 Wed 15:50 -->
+<!-- 2015-08-19 Wed 16:38 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Tmux</title>
@@ -156,6 +156,7 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#orgheadline1">1. Check for existing tmux sessions</a></li>
 <li><a href="#orgheadline2">2. Create a tmux session with a name</a></li>
+<li><a href="#orgheadline3">3. Connect to an existing tmux session</a></li>
 </ul>
 </div>
 </div>
@@ -172,6 +173,7 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
+
 <div id="outline-container-orgheadline2" class="outline-2">
 <h2 id="orgheadline2"><span class="section-number-2">2</span> Create a tmux session with a name</h2>
 <div class="outline-text-2" id="text-2">
@@ -180,6 +182,18 @@ so you can reference the session later by name
 You can have a tmux session open for each jail or to perform a task 
 that won't die when you disconnect
 </p>
+<div class="org-src-container">
+
+<pre class="src src-sh">tmux new -s &lt;session_name&gt;
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="orgheadline3"><span class="section-number-2">3</span> Connect to an existing tmux session</h2>
+<div class="outline-text-2" id="text-3">
 <div class="org-src-container">
 
 <pre class="src src-sh">tmux -s &lt;session_name&gt;
