@@ -1,0 +1,6 @@
+#+SETUPFILE: /Users/kbusi/Devel/org-html-themes/setup/theme-readtheorg.setup
+#+TITLE: Notes
+
+- Beware, most of these are system administration/reference notes
+
+[[file:tmux.org][tmux]]

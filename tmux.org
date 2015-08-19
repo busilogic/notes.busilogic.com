@@ -1,0 +1,18 @@
+#+SETUPFILE: /Users/kbusi/Devel/org-html-themes/setup/theme-readtheorg.setup
+#+TITLE: Tmux
+
+
+* Check for existing tmux sessions
+#+BEGIN_SRC sh
+tmux ls
+#+END_SRC
+
+* Create a tmux session with a name
+  so you can reference the session later by name
+  You can have a tmux session open for each jail or to perform a task 
+  that won't die when you disconnect
+#+BEGIN_SRC sh
+tmux -s <session_name>  
+#+END_SRC
+
+

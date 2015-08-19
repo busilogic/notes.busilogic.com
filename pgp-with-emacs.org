@@ -1,0 +1,18 @@
+#+SETUPFILE: /Users/kbusi/Devel/org-html-themes/setup/theme-readtheorg.setup
+#+TITLE: PGP with Emacs
+
+* Introduction
+
+  A quick guide to using PGP and Emacs.
+  
+** Technologies/Packages
+   - GnuPGP or GPG
+   - Org Mode
+   - EasyPG
+
+* Install GPG
+  Use brew or a package manager to install gpg
+
+  #+BEGIN_SRC sh
+    $ brew install gpg
+  #+END_SRC
