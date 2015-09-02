@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-08-19 Wed 16:38 -->
+<!-- 2015-09-02 Wed 15:20 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Tmux</title>
@@ -154,16 +154,17 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline1">1. Check for existing tmux sessions</a></li>
+<li><a href="#orgheadline1">1. List existing tmux sessions</a></li>
 <li><a href="#orgheadline2">2. Create a tmux session with a name</a></li>
 <li><a href="#orgheadline3">3. Connect to an existing tmux session</a></li>
+<li><a href="#orgheadline4">4. Detach from an existing tmux session without closing it</a></li>
 </ul>
 </div>
 </div>
-
+<hr  />
 
 <div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1"><span class="section-number-2">1</span> Check for existing tmux sessions</h2>
+<h2 id="orgheadline1"><span class="section-number-2">1</span> List existing tmux sessions</h2>
 <div class="outline-text-2" id="text-1">
 <div class="org-src-container">
 
@@ -196,7 +197,19 @@ that won't die when you disconnect
 <div class="outline-text-2" id="text-3">
 <div class="org-src-container">
 
-<pre class="src src-sh">tmux -s &lt;session_name&gt;
+<pre class="src src-sh">tmux attach-sesson -t &lt;session_name&gt;
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline4" class="outline-2">
+<h2 id="orgheadline4"><span class="section-number-2">4</span> Detach from an existing tmux session without closing it</h2>
+<div class="outline-text-2" id="text-4">
+<div class="org-src-container">
+
+<pre class="src src-sh">C-b d
 </pre>
 </div>
 </div>
