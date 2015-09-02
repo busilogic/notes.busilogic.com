@@ -24,7 +24,7 @@
 
 ** Create an org file with the setup line on top
 #+BEGIN_SRC org
-#+SETUPFILE: ~/Devel/org-html-themes/setup/theme-readtheorg.setup
+#+SETUPFILE: /path/to/org-html-themes/setup/theme-readtheorg.setup
 #+TITLE: Title of my Org file
 #+END_SRC
 
