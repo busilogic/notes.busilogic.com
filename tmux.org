@@ -23,3 +23,10 @@ tmux -s <session_name>
 #+END_SRC
 
 
+* Disconnect from an existing tmux session without closing it
+  
+#+BEGIN_SRC sh
+C-b d
+#+END_SRC
+
+
