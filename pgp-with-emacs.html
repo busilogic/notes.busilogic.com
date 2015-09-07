@@ -3,23 +3,30 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>notes.busilogic.com</title>
-<!-- 2015-08-09 Sun 21:50 -->
+<!-- 2015-09-07 Mon 13:53 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>PGP with Emacs</title>
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="kiran" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
   .todo   { font-family: monospace; color: red; }
-  .done   { color: green; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
   .tag    { background-color: #eee; font-family: monospace;
             padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
   .underline { text-decoration: underline; }
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
@@ -58,15 +65,14 @@
   caption.t-above { caption-side: top; }
   caption.t-bottom { caption-side: bottom; }
   td, th { vertical-align:top;  }
-  th.right  { text-align: center;  }
-  th.left   { text-align: center;   }
-  th.center { text-align: center; }
-  td.right  { text-align: right;  }
-  td.left   { text-align: left;   }
-  td.center { text-align: center; }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
   dt { font-weight: bold; }
-  .footpara:nth-child(2) { display: inline; }
-  .footpara { display: block; }
+  .footpara { display: inline; }
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
@@ -88,6 +94,12 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   /*]]>*/-->
 </style>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/readtheorg/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="http://www.pirilampo.org/styles/readtheorg/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/lib/js/jquery.stickytableheaders.js"></script>
+<script type="text/javascript" src="http://www.pirilampo.org/styles/readtheorg/js/readtheorg.js"></script>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -137,14 +149,122 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">notes.busilogic.com</h1>
+<h1 class="title">PGP with Emacs</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgheadline1">1. Technologies/Packages</a></li>
+<li><a href="#orgheadline4">2. GPG</a>
+<ul>
+<li><a href="#orgheadline2">2.1. Install GPG</a></li>
+<li><a href="#orgheadline3">2.2. Generate a gpg key</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline5">3. Emacs</a></li>
+<li><a href="#orgheadline6">4. Reference Links</a></li>
+</ul>
+</div>
+</div>
+<hr  />
+
 <p>
-/Users/kbusi/Devel/notes.busilogic.com:
-total used in directory 24 available 64046400
-drwxr-xr-x+  4 kbusi  staff   136 Aug  9 21:47 .
-drwxr-xr-x+ 60 kbusi  staff  2040 Aug  9 21:41 ..
--rw-r&#x2013;r&#x2013;+  1 kbusi  staff   346 Aug  9 21:47 pgp-with-emacs.org
+A quick guide to using PGP and Emacs.
+GPG is the best open source encryption password.
+Emacs package EasyPG makes working with GPG easy.
 </p>
+
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1"><span class="section-number-2">1</span> Technologies/Packages</h2>
+<div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>GnuPGP or GPG</li>
+<li>Org Mode</li>
+<li>EasyPG</li>
+</ul>
+<hr  />
+</div>
+</div>
+
+<div id="outline-container-orgheadline4" class="outline-2">
+<h2 id="orgheadline4"><span class="section-number-2">2</span> GPG</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="orgheadline2"><span class="section-number-3">2.1</span> Install GPG</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Use brew or a package manager to install gpg
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">$ brew install gpg
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="orgheadline3"><span class="section-number-3">2.2</span> Generate a gpg key</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+You can accept the defaults
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">gpg --gen-key
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline5" class="outline-2">
+<h2 id="orgheadline5"><span class="section-number-2">3</span> Emacs</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Emacs version &gt; 24 comes with EasyPG by default
+</p>
+
+<ul class="org-ul">
+<li><p>
+At the begining of your file, place this line:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-org"># -*- epa-file-encrypt-to: ("email-address-tied-to-gpg-key-created") -*-
+</pre>
+</div></li>
+
+<li>Save the file with a .gpg extension</li>
+
+<li>On save, you will be asked for a password.</li>
+<li>Use the same password to unencrypt the file when opening using emacs</li>
+<li><p>
+Verify the file can't be opened in terminal by doing a 
+</p>
+<div class="org-src-container">
+
+<pre class="src src-sh">cat filename.org.gpg
+</pre>
+</div>
+<ul class="org-ul">
+<li>You should see gibberish in the terminal</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline6" class="outline-2">
+<h2 id="orgheadline6"><span class="section-number-2">4</span> Reference Links</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li><a href="http://irtfweb.ifa.hawaii.edu/~lockhart/gpg/gpg-cs.html">http://irtfweb.ifa.hawaii.edu/~lockhart/gpg/gpg-cs.html</a></li>
+</ul>
+</div>
+</div>
 </div>
 </body>
 </html>

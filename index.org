@@ -11,3 +11,5 @@
 
 - [[file:tmux.org][tmux]]
 
+
+- file:pgp-with-emacs.org
