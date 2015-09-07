@@ -48,3 +48,5 @@ Emacs package EasyPG makes working with GPG easy.
 
 * Reference Links
 - [[http://irtfweb.ifa.hawaii.edu/~lockhart/gpg/gpg-cs.html]]
+
+- [[http://emacs-fu.blogspot.com.au/2011/02/keeping-your-secrets-secret.html]]
