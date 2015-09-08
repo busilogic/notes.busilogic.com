@@ -11,7 +11,7 @@ These notes are for freebsd > 10
   svn checkout https://svn.FreeBSD.org/base/releng/10.2 /usr/src
   #+END_SRC
   - where the 10.2 is your current release
-
+  - svn.FreeBSD.org will automatically choose a mirror near you
 
 ** Inspect Boot log
   #+BEGIN_SRC sh
@@ -67,8 +67,16 @@ These notes are for freebsd > 10
 
 
 
+** View traffic on network interfaces
+
+    #+BEGIN_SRC sh
+      $ systat -ifstat 1
+    #+END_SRC
+
+------
+
 * Deploy Python App to FreeBSD Jail
----------------------------------
+
        #+BEGIN_SRC sh
           $ pkg update
        #+END_SRC
@@ -181,18 +189,47 @@ include /usr/local/etc/nginx/conf.d/*.conf;
 ** Restart nginx, make sure no errors
 ** Verify URL works in browser
 
-** Reference: https://www.srijn.net/notes/django-uwsgi-nginx-on-freebsd.html
+** Troubleshooting
+*** Check log files
+   - app uwsgi log file specified in ini file first for clues
+   - check nginx error log file 
+
+*** IOError: decoder jpeg not available
+    
+    Use pillow instead of PIL
+    Make sure dependencies for PIL/pillow are installed
+    Remove pillow and reinstall after dependencies installed on OS
+
+    - On Ubuntu, make sure libjpeg8-dev library is installed
+      Uninstall and re-install pillow
+
+    - On FreeBSD
+      #+BEGIN_SRC sh
+      $ pkg search jpeg-8
+      jpeg-8-6
+      $ pkg install jpeg-8_6
+      #+END_SRC
+
+      - Uninstall and reinstall pillow
+      - Test you can create a thumbnail using Python REPL
+        #+BEGIN_SRC sh
+        # python
+        Python 2.7.10 (default, Aug  9 2015, 01:20:33)
+        [GCC 4.2.1 Compatible FreeBSD Clang 3.4.1 (tags/RELEASE_34/dot1-final 208032)] on freebsd10
+        Type "help", "copyright", "credits" or "license" for more information.
+        >>> from PIL import Image
+        >>> im = Image.open('jpeg-file-full-path')
+        >>> im.thumbnail((128,128), Image.ANTIALIAS)        
+        #+END_SRC
 
 
+** Reference: 
+- https://www.srijn.net/notes/django-uwsgi-nginx-on-freebsd.html
+
+- [[https://translate.google.com/translate?u=http://mainview.ru/raznoe/unix/python-image-library-pil-vo-freebsd&langpair=ru|en&ie=UTF8][jpeg decoder on freebsd]]
+------
 
 
-
-
-* View traffic on network interfaces
-------------------------------------
-    #+BEGIN_SRC sh
-      $ systat -ifstat 1
-    #+END_SRC
 
 
 * Manage Jails using ezjail-admin
@@ -318,10 +355,10 @@ $ forever start index.js
 
 * References
 ------------
-*** http://www.bsdnow.tv/tutorials/jails
-*** [[https://www.packtpub.com/books/content/securing-network-services-freebsd-jails][Setup new jail with SSH enabled]]
-*** https://discuss.vultr.com/discussion/432/adding-more-storage/p1
-*** https://forums.freebsd.org/threads/mountroot.46296/
+- http://www.bsdnow.tv/tutorials/jails
+- [[https://www.packtpub.com/books/content/securing-network-services-freebsd-jails][Setup new jail with SSH enabled]]
+- https://discuss.vultr.com/discussion/432/adding-more-storage/p1
+- https://forums.freebsd.org/threads/mountroot.46296/
 
 
 
@@ -384,3 +421,4 @@ $ forever start index.js
 # Pass
 # /dev/label/rootfs0 
 
+- [[https://forums.freebsd.org/threads/building-a-10-2-system-from-source.53069/]]
