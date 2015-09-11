@@ -1,0 +1,47 @@
+#+SETUPFILE: /Users/kbusi/devel/org-html-themes/setup/theme-readtheorg.setup
+#+TITLE: On Design
+-----
+
+Design for non designers
+-----
+
+* Books
+- [[http://www.amazon.com/Steal-Like-Artist-Things-Creative/dp/0761169253/ref=sr_1_1?ie=UTF8&qid=1441278271&sr=8-1&keywords=steal+like+an+artist&pebp=1441278274526&perid=0PC95ZYPNB989E9XX302][Steal Like an Artist]]
+
+- [[https://designcode.io/][DesignCode Sketch + iOS]]
+
+- http://rosenfeldmedia.com/
+
+- http://abookapart.com/
+
+
+* Articles
+
+- http://www.lukew.com/resources/mobile_first.asp
+
+* Courses
+- trydesignlab.com course
+
+* Communities
+- http://graphicdesign.stackexchange.com/
+
+
+* Colors
+- http://www.colourlovers.com/
+- http://www.colourlovers.com/palettes
+- https://dribbble.com/shots/2226846-Branding-Showcase-Template/attachments/413993
+- https://dribbble.com/shots/166246-My-Secret-for-Color-Schemes
+- https://dribbble.com/shots/2146350-Branding-Artboards
+
+- [[https://dribbble.com/shots/1999119-Intelworks-Greyscale-mocks][Grey scale mockups]]
+
+
+* Business side of design
+
+- https://creativeclass.io/
+
+- file:effectivefeedback.pdf
+  Initial education tool for clients on how to provide effective feedback.
+
+- https://letsworkshop.com/
+
