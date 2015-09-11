@@ -353,6 +353,10 @@ $ forever start index.js
      #+END_SRC
 
 
+* Jenkins
+- https://wiki.jenkins-ci.org/display/JENKINS/FreeBSD
+
+  Setting up Jenkins on freebsd
 * References
 ------------
 - http://www.bsdnow.tv/tutorials/jails
