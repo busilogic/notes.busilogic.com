@@ -1,6 +1,6 @@
 #!/bin/sh
  
-ssh nugget@10.10.10.10 <<EOF
+ssh -p 22000 nugget@10.10.10.10 <<EOF
   cd ~/notes.busilogic.com
   git pull
   exit
