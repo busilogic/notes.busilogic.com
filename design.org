@@ -25,8 +25,13 @@ Design for non designers
 * Communities
 - http://graphicdesign.stackexchange.com/
 
+* Tools
+** Wirify
+   
+   Turn an existing site into a wireframe
+   - http://www.wirify.com/
 
-* Colors
+** Colors
 - http://www.colourlovers.com/
 - http://www.colourlovers.com/palettes
 - https://dribbble.com/shots/2226846-Branding-Showcase-Template/attachments/413993
