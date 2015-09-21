@@ -1,4 +1,4 @@
-#+SETUPFILE: /Users/kbusi/Devel/org-html-themes/setup/theme-readtheorg.setup
+#+SETUPFILE: /Users/kbusi/Devel/org-html-themes/setup/theme-readtheorg-local.setup
 #+TITLE: freebsd notes 
 ------
 
