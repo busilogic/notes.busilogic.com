@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-09-21 Mon 18:27 -->
+<!-- 2015-09-24 Thu 13:37 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>freebsd notes</title>
@@ -193,22 +193,26 @@ for the JavaScript code in this tag.
 <li><a href="#orgheadline29">2.19. Reference:</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline31">3. Manage Jails using ezjail-admin</a></li>
-<li><a href="#orgheadline32">4. Enable networking in jail</a></li>
-<li><a href="#orgheadline34">5. Using fetch fails with ssl auth error</a>
+<li><a href="#orgheadline35">3. FreeBSD Jails</a>
 <ul>
-<li><a href="#orgheadline33">5.1. Reason: Certificate verification failed</a></li>
+<li><a href="#orgheadline31">3.1. Manage Jails using ezjail-admin</a></li>
+<li><a href="#orgheadline33">3.2. Create new Jail</a>
+<ul>
+<li><a href="#orgheadline32">3.2.1. Create an ip address for jail</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline35">6. Starting PostGres in jail</a></li>
-<li><a href="#orgheadline36">7. Running Ghost</a></li>
-<li><a href="#orgheadline38">8. Create new Jail</a>
-<ul>
-<li><a href="#orgheadline37">8.1. Create ip address for jail</a></li>
+<li><a href="#orgheadline34">3.3. Enable networking in jail</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline39">9. Jenkins</a></li>
-<li><a href="#orgheadline40">10. References</a></li>
+<li><a href="#orgheadline37">4. Using fetch fails with ssl auth error</a>
+<ul>
+<li><a href="#orgheadline36">4.1. Reason: Certificate verification failed</a></li>
+</ul>
+</li>
+<li><a href="#orgheadline38">5. Starting PostGres in jail</a></li>
+<li><a href="#orgheadline39">6. Running Ghost</a></li>
+<li><a href="#orgheadline40">7. Jenkins</a></li>
+<li><a href="#orgheadline41">8. References</a></li>
 </ul>
 </div>
 </div>
@@ -346,6 +350,7 @@ $ ufs:/dev/vtbd0s1
 </div>
 </div>
 </div>
+
 
 <div id="outline-container-orgheadline30" class="outline-2">
 <h2 id="orgheadline30"><span class="section-number-2">2</span> Deploy Python App to FreeBSD Jail</h2>
@@ -612,9 +617,12 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 
 
-<div id="outline-container-orgheadline31" class="outline-2">
-<h2 id="orgheadline31"><span class="section-number-2">3</span> Manage Jails using ezjail-admin</h2>
+<div id="outline-container-orgheadline35" class="outline-2">
+<h2 id="orgheadline35"><span class="section-number-2">3</span> FreeBSD Jails</h2>
 <div class="outline-text-2" id="text-3">
+</div><div id="outline-container-orgheadline31" class="outline-3">
+<h3 id="orgheadline31"><span class="section-number-3">3.1</span> Manage Jails using ezjail-admin</h3>
+<div class="outline-text-3" id="text-3-1">
 <hr  />
 <div class="org-src-container">
 
@@ -639,104 +647,35 @@ $ sudo jexec 1 hostname
 </div>
 
 
-<div id="outline-container-orgheadline32" class="outline-2">
-<h2 id="orgheadline32"><span class="section-number-2">4</span> Enable networking in jail</h2>
-<div class="outline-text-2" id="text-4">
-<hr  />
-<div class="org-src-container">
-
-<pre class="src src-sh"># Replace jail name with your jail created
-$ cp /etc/resolv.conf /usr/jails/&lt;jailname&gt;/etc/
-</pre>
-</div>
-</div>
-</div>
-
-
-
-
-
-
-<div id="outline-container-orgheadline34" class="outline-2">
-<h2 id="orgheadline34"><span class="section-number-2">5</span> Using fetch fails with ssl auth error</h2>
-<div class="outline-text-2" id="text-5">
-<hr  />
-</div>
 <div id="outline-container-orgheadline33" class="outline-3">
-<h3 id="orgheadline33"><span class="section-number-3">5.1</span> Reason: Certificate verification failed</h3>
-<div class="outline-text-3" id="text-5-1">
-<div class="org-src-container">
-
-<pre class="src src-sh"># Install ca root
-$ pkg install ca_root_nss
-
-# Then ln or cp the combined root certificates to /etc/ssl/cert.pem
-$ ln -s /usr/local/share/certs/ca-root-nss.crt /etc/ssl/cert.pem
-</pre>
-</div>
-</div>
-</div>
-</div>
-
-
-<div id="outline-container-orgheadline35" class="outline-2">
-<h2 id="orgheadline35"><span class="section-number-2">6</span> Starting PostGres in jail</h2>
-<div class="outline-text-2" id="text-6">
-<hr  />
-<div class="org-src-container">
-
-<pre class="src src-sh">$ su pgsql
-$ pg_ctl -D /usr/local/pgsql/data initdb /usr/local/bin/pg_ctl -D /usr/local/pgsql/data -l /usr/local/pgsql/postgresql.log start
-</pre>
-</div>
-</div>
-</div>
-
-
-<div id="outline-container-orgheadline36" class="outline-2">
-<h2 id="orgheadline36"><span class="section-number-2">7</span> Running Ghost</h2>
-<div class="outline-text-2" id="text-7">
-<div class="org-src-container">
-
-<pre class="src src-sh"># set node env
-$ setenv NODE_ENV production
-
-# verify node env set
-$ env  # Should see all environment variables
-
-# Run ghost
-$ npm start
-
-# Run Ghost forever
-$ forever start index.js
-</pre>
-</div>
-</div>
-</div>
-
-
-<div id="outline-container-orgheadline38" class="outline-2">
-<h2 id="orgheadline38"><span class="section-number-2">8</span> Create new Jail</h2>
-<div class="outline-text-2" id="text-8">
+<h3 id="orgheadline33"><span class="section-number-3">3.2</span> Create new Jail</h3>
+<div class="outline-text-3" id="text-3-2">
 <p>
-The following is condensed instructions from <a href="http://www.bsdnow.tv/tutorials/jails">bsdnow</a>
+A condensed version of <a href="http://www.bsdnow.tv/tutorials/jails">bsdnow</a>
 </p>
 </div>
-<div id="outline-container-orgheadline37" class="outline-3">
-<h3 id="orgheadline37"><span class="section-number-3">8.1</span> Create ip address for jail</h3>
-<div class="outline-text-3" id="text-8-1">
+
+<div id="outline-container-orgheadline32" class="outline-4">
+<h4 id="orgheadline32"><span class="section-number-4">3.2.1</span> Create an ip address for jail</h4>
+<div class="outline-text-4" id="text-3-2-1">
 <ul class="org-ul">
-<li>find an ipaddress to set for jail</li>
+<li><p>
+Find an ipaddress to set for jail
+</p>
+
+<p>
+Select the next ip address number
+</p></li>
 </ul>
 <div class="org-src-container">
 
 <pre class="src src-sh">$ jls
 </pre>
 </div>
-<ul class="org-ul">
-<li>select the next ip address number</li>
 
-<li>Make an alias on your netowrk card with your network settings</li>
+
+<ul class="org-ul">
+<li>Make an alias on your network card with your network settings</li>
 </ul>
 <div class="org-src-container">
 
@@ -803,9 +742,84 @@ To enable networking inside jail, copy the resolv.conf file
 </div>
 
 
+<div id="outline-container-orgheadline34" class="outline-3">
+<h3 id="orgheadline34"><span class="section-number-3">3.3</span> Enable networking in jail</h3>
+<div class="outline-text-3" id="text-3-3">
+<hr  />
+<div class="org-src-container">
+
+<pre class="src src-sh"># Replace jail name with your jail created
+$ cp /etc/resolv.conf /usr/jails/&lt;jailname&gt;/etc/
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline37" class="outline-2">
+<h2 id="orgheadline37"><span class="section-number-2">4</span> Using fetch fails with ssl auth error</h2>
+<div class="outline-text-2" id="text-4">
+<hr  />
+</div>
+<div id="outline-container-orgheadline36" class="outline-3">
+<h3 id="orgheadline36"><span class="section-number-3">4.1</span> Reason: Certificate verification failed</h3>
+<div class="outline-text-3" id="text-4-1">
+<div class="org-src-container">
+
+<pre class="src src-sh"># Install ca root
+$ pkg install ca_root_nss
+
+# Then ln or cp the combined root certificates to /etc/ssl/cert.pem
+$ ln -s /usr/local/share/certs/ca-root-nss.crt /etc/ssl/cert.pem
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgheadline38" class="outline-2">
+<h2 id="orgheadline38"><span class="section-number-2">5</span> Starting PostGres in jail</h2>
+<div class="outline-text-2" id="text-5">
+<hr  />
+<div class="org-src-container">
+
+<pre class="src src-sh">$ su pgsql
+$ pg_ctl -D /usr/local/pgsql/data initdb /usr/local/bin/pg_ctl -D /usr/local/pgsql/data -l /usr/local/pgsql/postgresql.log start
+</pre>
+</div>
+</div>
+</div>
+
+
 <div id="outline-container-orgheadline39" class="outline-2">
-<h2 id="orgheadline39"><span class="section-number-2">9</span> Jenkins</h2>
-<div class="outline-text-2" id="text-9">
+<h2 id="orgheadline39"><span class="section-number-2">6</span> Running Ghost</h2>
+<div class="outline-text-2" id="text-6">
+<div class="org-src-container">
+
+<pre class="src src-sh"># set node env
+$ setenv NODE_ENV production
+
+# verify node env set
+$ env  # Should see all environment variables
+
+# Run ghost
+$ npm start
+
+# Run Ghost forever
+$ forever start index.js
+</pre>
+</div>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-orgheadline40" class="outline-2">
+<h2 id="orgheadline40"><span class="section-number-2">7</span> Jenkins</h2>
+<div class="outline-text-2" id="text-7">
 <ul class="org-ul">
 <li><p>
 <a href="https://wiki.jenkins-ci.org/display/JENKINS/FreeBSD">https://wiki.jenkins-ci.org/display/JENKINS/FreeBSD</a>
@@ -817,9 +831,10 @@ Setting up Jenkins on freebsd
 </ul>
 </div>
 </div>
-<div id="outline-container-orgheadline40" class="outline-2">
-<h2 id="orgheadline40"><span class="section-number-2">10</span> References</h2>
-<div class="outline-text-2" id="text-10">
+
+<div id="outline-container-orgheadline41" class="outline-2">
+<h2 id="orgheadline41"><span class="section-number-2">8</span> References</h2>
+<div class="outline-text-2" id="text-8">
 <hr  />
 <ul class="org-ul">
 <li><a href="http://www.bsdnow.tv/tutorials/jails">http://www.bsdnow.tv/tutorials/jails</a></li>

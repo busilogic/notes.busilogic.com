@@ -75,6 +75,7 @@ These notes are for freebsd > 10
 
 ------
 
+
 * Deploy Python App to FreeBSD Jail
 
        #+BEGIN_SRC sh
@@ -232,7 +233,9 @@ include /usr/local/etc/nginx/conf.d/*.conf;
 
 
 
-* Manage Jails using ezjail-admin
+* FreeBSD Jails
+
+** Manage Jails using ezjail-admin
 ---------------------------------
       #+BEGIN_SRC sh
         # View list of available jails
@@ -254,65 +257,20 @@ include /usr/local/etc/nginx/conf.d/*.conf;
       #+END_SRC
 
 
-* Enable networking in jail
----------------------------------
-      #+BEGIN_SRC sh
-        # Replace jail name with your jail created
-        $ cp /etc/resolv.conf /usr/jails/<jailname>/etc/
-      #+END_SRC
+** Create new Jail
 
+   A condensed version of [[http://www.bsdnow.tv/tutorials/jails][bsdnow]]
 
-
-
-
-
-* Using fetch fails with ssl auth error
----------------------------------------
-** Reason: Certificate verification failed
-
-    #+BEGIN_SRC sh
-      # Install ca root
-      $ pkg install ca_root_nss
-
-      # Then ln or cp the combined root certificates to /etc/ssl/cert.pem
-      $ ln -s /usr/local/share/certs/ca-root-nss.crt /etc/ssl/cert.pem
-    #+END_SRC
-
-
-* Starting PostGres in jail
----------------------------
-    #+BEGIN_SRC sh
-      $ su pgsql
-      $ pg_ctl -D /usr/local/pgsql/data initdb /usr/local/bin/pg_ctl -D /usr/local/pgsql/data -l /usr/local/pgsql/postgresql.log start
-    #+END_SRC
-
-
-* Running Ghost
-#+BEGIN_SRC sh
-# set node env
-$ setenv NODE_ENV production
-
-# verify node env set
-$ env  # Should see all environment variables
-
-# Run ghost
-$ npm start
-
-# Run Ghost forever
-$ forever start index.js
-#+END_SRC
-
-
-* Create new Jail
-  The following is condensed instructions from [[http://www.bsdnow.tv/tutorials/jails][bsdnow]]
-** Create ip address for jail
-   - find an ipaddress to set for jail
+*** Create an ip address for jail
+   - Find an ipaddress to set for jail
+     
+     Select the next ip address number
    #+BEGIN_SRC sh
      $ jls
    #+END_SRC
-   - select the next ip address number
 
-   - Make an alias on your netowrk card with your network settings
+
+   - Make an alias on your network card with your network settings
    #+BEGIN_SRC sh
      $ sudo ifconfig lo10 alias 10.10.10.15 netmask 0xffffff00
    #+END_SRC
@@ -353,10 +311,58 @@ $ forever start index.js
      #+END_SRC
 
 
+** Enable networking in jail
+---------------------------------
+      #+BEGIN_SRC sh
+        # Replace jail name with your jail created
+        $ cp /etc/resolv.conf /usr/jails/<jailname>/etc/
+      #+END_SRC
+
+
+* Using fetch fails with ssl auth error
+---------------------------------------
+** Reason: Certificate verification failed
+
+    #+BEGIN_SRC sh
+      # Install ca root
+      $ pkg install ca_root_nss
+
+      # Then ln or cp the combined root certificates to /etc/ssl/cert.pem
+      $ ln -s /usr/local/share/certs/ca-root-nss.crt /etc/ssl/cert.pem
+    #+END_SRC
+
+
+* Starting PostGres in jail
+---------------------------
+    #+BEGIN_SRC sh
+      $ su pgsql
+      $ pg_ctl -D /usr/local/pgsql/data initdb /usr/local/bin/pg_ctl -D /usr/local/pgsql/data -l /usr/local/pgsql/postgresql.log start
+    #+END_SRC
+
+
+* Running Ghost
+#+BEGIN_SRC sh
+# set node env
+$ setenv NODE_ENV production
+
+# verify node env set
+$ env  # Should see all environment variables
+
+# Run ghost
+$ npm start
+
+# Run Ghost forever
+$ forever start index.js
+#+END_SRC
+
+
+
+
 * Jenkins
 - https://wiki.jenkins-ci.org/display/JENKINS/FreeBSD
 
   Setting up Jenkins on freebsd
+
 * References
 ------------
 - http://www.bsdnow.tv/tutorials/jails
