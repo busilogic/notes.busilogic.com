@@ -1,8 +1,7 @@
 #+SETUPFILE: /Users/kbusi/Devel/org-html-themes/setup/theme-readtheorg-local.setup
 #+TITLE: freebsd notes 
-------
 
-These notes are for freebsd > 10
+Sys Admin Notes 
 ------
 
 * System Administration
@@ -78,43 +77,93 @@ These notes are for freebsd > 10
 
 * Deploy Python App to FreeBSD Jail
 
-       #+BEGIN_SRC sh
-          $ pkg update
+  - Update pkg
+
+    #+BEGIN_SRC sh
+    $ pkg update
+    #+END_SRC
+
+  - Install Dependencies using pkg
+
+    #+BEGIN_SRC sh
+    $ pkg install python
+    $ pkg install py27-pip 
+    $ pkg install sqlite3
+    $ pkg install py27-sqlite3
+    $ pkg install git
+    $ pkg install nano
+    $ pkg install postgresql94-client # so psycopg2 installs using pip
+                                      # Need to specify version ex: 94 
+    $ pkg install nginx
+    $ pkg install py27-supervisor
+    #+END_SRC
+
+  - Install Virtualenv
+
+    #+BEGIN_SRC sh
+    # install virtualenv
+    $ pip install virtualenv
+    
+    #END_SRC
+
+  - Add SSH public key to Bitbucket or Github
+
+    So you can clone the project
+
+
+  - Clone the project to your server
+
+    Ex: Create a /var/www/ directory and clone into there
+
+
+  - Create a virtual env
+
+    I keep my virtualenv inside my project as venv to keep it selfcontained
+
+    #+BEGIN_SRC sh 
+    $ virtualenv --no-site-packages venv
+    # Activate virtual env (not the csh special script)
+    $ source venv/bin/activate.csh
        #+END_SRC
 
-- packages to install on new jail
 
-       #+BEGIN_SRC sh
+  - Install requirements into virtualenv using pip 
+    
+    Be sure virtual env is active 
 
-       $ pkg install python
-       $ pkg install py27-pip 
-       $ pkg install sqlite3
-       $ pkg install py27-sqlite3
-       $ pkg install git
-       $ pkg install nano
-       # install virtualenv
-       $ pip install virtualenv
-       $ pkg install postgresql-client  # so psycopg2 installs using pip
-       $ pkg install nginx
-       $ pkg install uwsgi  # Use pip to keep it in virutalenv
-       $ pkg install py27-supervisor
-#+END_SRC
+    #+BEGIN_SRC sh
+    $ pip install -r requirements.txt
+    #+END_SRC
 
-- you might get errors if you use uwsgi using pkg because virtualenv path
-  wont be recognized. Use pip install uwsgi and run
-  venv/bin/uwsgi --socket 127.0.0.1:8080 --protocol=http -w receiptapp.py
--
-  link:https://www.digitalocean.com/community/tutorials/how-to-deploy-python-wsgi-applications-using-uwsgi-web-server-with-nginx
+    - You might get errors if you use uwsgi using pkg b/c virtualenv path
+      wont be recognized. Use pip install uwsgi and run
+      venv/bin/uwsgi --socket 127.0.0.1:8080 --protocol=http -w receiptapp.py
+    - link:https://www.digitalocean.com/community/tutorials/how-to-deploy-python-wsgi-applications-using-uwsgi-web-server-with-nginx
 
 
-** Create a virtual env
-       #+BEGIN_SRC sh 
-           $ virtualenv --no-site-packages venv
-           # Activate virtual env (not the csh special script)
-           $ source venv/bin/activate.csh
-       #+END_SRC
+  - Verify nginx is also running in jail
+    #+BEGIN_SRC sh
+    $ service nginx status
+    Cannot 'status' nginx. Set nginx_enable to YES in /etc/rc.conf or use 'onestatus' instead of 'status'.
+    #+END_SRC
 
-** Pip install requirements after virtual env activated
+    - On a fresh install of nginx, if you get a message like that
+      - Add nginx_enable="YES" to /etc/defaults/rc.conf
+        #+BEGIN_SRC sh
+        nginx_enable="YES"        
+        #+END_SRC
+
+    - Verify nginx status again
+
+      #+BEGIN_SRC sh
+      service nginx status
+      nginx is not running.      
+      #+END_SRC
+
+    - Start nginx
+
+   - by pointing to default nginx page in jail to verify forwarding works
+
 ** Create Postgres user and database
 #+BEGIN_SRC sh
 # swith to pgsql user
@@ -147,8 +196,6 @@ $ psql -U <username> -h <hostname> -d <database_name>
    - should run wihout errors
 
 ** Point webserver to nginx in app jail
-** Verify nginx is also running in jail
-   - by pointing to default nginx page in jail to verify forwarding works
 
 ** Make sure supervisor is installed (py27-supervisor)
 ** Start supervisord service

@@ -2,6 +2,9 @@
 #+TITLE: On Design
 -----
 
+Design notes
+1) Hacking Design
+
 Design for non designers
 -----
 
@@ -56,6 +59,15 @@ Design for non designers
    - Brown: Nature, Wholesomeness, Dependability
    - Tan or Beige: Conservative, Piety, Dull
    - Cream or Ivory: Calm, Elegant, Purity
+
+*** Terminology
+    Hue is color (blue, green, red, etc.).
+    Chroma is the purity of a color (a high chroma has no added black, white or gray).
+    Saturation refers to how strong or weak a color is (high saturation being strong).
+    Value refers to how light or dark a color is (light having a high value).
+    Tones are created by adding gray to a color, making it duller than the original.
+    Shades are created by adding black to a color, making it darker than the original.
+    Tints are created by adding white to a color, making it lighter than the original.
 
 * Business side of design
 

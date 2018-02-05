@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-07-25 Tue 13:44 -->
+<!-- 2015-09-24 Thu 13:37 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>freebsd notes</title>
@@ -154,76 +154,81 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline8">System Administration</a>
+<li><a href="#orgheadline8">1. System Administration</a>
 <ul>
-<li><a href="#orgheadline1">Install FreeBSD Source Code</a></li>
-<li><a href="#orgheadline2">Inspect Boot log</a></li>
-<li><a href="#orgheadline3">Modify default editor from vi to nano</a></li>
-<li><a href="#orgheadline4">Check disk space usage by directory</a></li>
-<li><a href="#orgheadline5">Expand Partition to Entire Drive</a></li>
-<li><a href="#orgheadline6">Edit Crontab</a></li>
-<li><a href="#orgheadline7">View traffic on network interfaces</a></li>
+<li><a href="#orgheadline1">1.1. Install FreeBSD Source Code</a></li>
+<li><a href="#orgheadline2">1.2. Inspect Boot log</a></li>
+<li><a href="#orgheadline3">1.3. Modify default editor from vi to nano</a></li>
+<li><a href="#orgheadline4">1.4. Check disk space usage by directory</a></li>
+<li><a href="#orgheadline5">1.5. Expand Partition to Entire Drive</a></li>
+<li><a href="#orgheadline6">1.6. Edit Crontab</a></li>
+<li><a href="#orgheadline7">1.7. View traffic on network interfaces</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline9">Deploy Python App to FreeBSD Jail</a>
+<li><a href="#orgheadline30">2. Deploy Python App to FreeBSD Jail</a>
 <ul>
-<li><a href="#orgheadline10">Create Postgres user and database</a></li>
-<li><a href="#orgheadline11">Run bootstrap.py</a></li>
-<li><a href="#orgheadline12">Verify can connect to db and see tables created</a></li>
-<li><a href="#orgheadline13">Make sure app is connecting to correct database by running it locally</a></li>
-<li><a href="#orgheadline14">Point webserver to nginx in app jail</a></li>
-<li><a href="#orgheadline15">Make sure supervisor is installed (py27-supervisor)</a></li>
-<li><a href="#orgheadline16">Start supervisord service</a></li>
-<li><a href="#orgheadline17">Edit supervisor.conf file in /usr/local/etc/supervisor.conf</a></li>
-<li><a href="#orgheadline18">Set nginx and supervisor to start on system start</a></li>
-<li><a href="#orgheadline19">Edit nginx.conf file to have this include statement in http block</a></li>
-<li><a href="#orgheadline20">Create conf.d directory if it doesn't exist</a></li>
-<li><a href="#orgheadline21">copy nginx.conf file to <i>usr/local/etc/nginx/conf.d</i></a></li>
-<li><a href="#orgheadline22">Restart nginx, make sure no errors</a></li>
-<li><a href="#orgheadline23">Verify URL works in browser</a></li>
-<li><a href="#orgheadline26">Troubleshooting</a>
+<li><a href="#orgheadline9">2.1. Create a virtual env</a></li>
+<li><a href="#orgheadline10">2.2. Pip install requirements after virtual env activated</a></li>
+<li><a href="#orgheadline11">2.3. Create Postgres user and database</a></li>
+<li><a href="#orgheadline12">2.4. Run bootstrap.py</a></li>
+<li><a href="#orgheadline13">2.5. Verify can connect to db and see tables created</a></li>
+<li><a href="#orgheadline14">2.6. Make sure app is connecting to correct database by running it locally</a></li>
+<li><a href="#orgheadline15">2.7. Point webserver to nginx in app jail</a></li>
+<li><a href="#orgheadline16">2.8. Verify nginx is also running in jail</a></li>
+<li><a href="#orgheadline17">2.9. Make sure supervisor is installed (py27-supervisor)</a></li>
+<li><a href="#orgheadline18">2.10. Start supervisord service</a></li>
+<li><a href="#orgheadline19">2.11. Edit supervisor.conf file in /usr/local/etc/supervisor.conf</a></li>
+<li><a href="#orgheadline20">2.12. Set nginx and supervisor to start on system start</a></li>
+<li><a href="#orgheadline21">2.13. Edit nginx.conf file to have this include statement in http block</a></li>
+<li><a href="#orgheadline22">2.14. Create conf.d directory if it doesn't exist</a></li>
+<li><a href="#orgheadline23">2.15. copy nginx.conf file to <i>usr/local/etc/nginx/conf.d</i></a></li>
+<li><a href="#orgheadline24">2.16. Restart nginx, make sure no errors</a></li>
+<li><a href="#orgheadline25">2.17. Verify URL works in browser</a></li>
+<li><a href="#orgheadline28">2.18. Troubleshooting</a>
 <ul>
-<li><a href="#orgheadline24">Check log files</a></li>
-<li><a href="#orgheadline25">IOError: decoder jpeg not available</a></li>
+<li><a href="#orgheadline26">2.18.1. Check log files</a></li>
+<li><a href="#orgheadline27">2.18.2. IOError: decoder jpeg not available</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline27">Reference:</a></li>
+<li><a href="#orgheadline29">2.19. Reference:</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline32">FreeBSD Jails</a>
+<li><a href="#orgheadline35">3. FreeBSD Jails</a>
 <ul>
-<li><a href="#orgheadline28">Manage Jails using ezjail-admin</a></li>
-<li><a href="#orgheadline29">Create new Jail</a>
+<li><a href="#orgheadline31">3.1. Manage Jails using ezjail-admin</a></li>
+<li><a href="#orgheadline33">3.2. Create new Jail</a>
 <ul>
-<li><a href="#orgheadline30">Create an ip address for jail</a></li>
+<li><a href="#orgheadline32">3.2.1. Create an ip address for jail</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline31">Enable networking in jail</a></li>
+<li><a href="#orgheadline34">3.3. Enable networking in jail</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline33">Using fetch fails with ssl auth error</a>
+<li><a href="#orgheadline37">4. Using fetch fails with ssl auth error</a>
 <ul>
-<li><a href="#orgheadline34">Reason: Certificate verification failed</a></li>
+<li><a href="#orgheadline36">4.1. Reason: Certificate verification failed</a></li>
 </ul>
 </li>
-<li><a href="#orgheadline35">Starting PostGres in jail</a></li>
-<li><a href="#orgheadline36">Running Ghost</a></li>
-<li><a href="#orgheadline37">Jenkins</a></li>
-<li><a href="#orgheadline38">References</a></li>
+<li><a href="#orgheadline38">5. Starting PostGres in jail</a></li>
+<li><a href="#orgheadline39">6. Running Ghost</a></li>
+<li><a href="#orgheadline40">7. Jenkins</a></li>
+<li><a href="#orgheadline41">8. References</a></li>
 </ul>
 </div>
 </div>
+<hr  />
+
 <p>
-Sys Admin Notes 
+These notes are for freebsd &gt; 10
 </p>
 <hr  />
 
 <div id="outline-container-orgheadline8" class="outline-2">
-<h2 id="orgheadline8">System Administration</h2>
-<div class="outline-text-2" id="text-orgheadline8">
+<h2 id="orgheadline8"><span class="section-number-2">1</span> System Administration</h2>
+<div class="outline-text-2" id="text-1">
 </div><div id="outline-container-orgheadline1" class="outline-3">
-<h3 id="orgheadline1">Install FreeBSD Source Code</h3>
-<div class="outline-text-3" id="text-orgheadline1">
+<h3 id="orgheadline1"><span class="section-number-3">1.1</span> Install FreeBSD Source Code</h3>
+<div class="outline-text-3" id="text-1-1">
 <div class="org-src-container">
 
 <pre class="src src-sh">svn checkout https://svn.FreeBSD.org/base/releng/10.2 /usr/src
@@ -237,8 +242,8 @@ Sys Admin Notes
 </div>
 
 <div id="outline-container-orgheadline2" class="outline-3">
-<h3 id="orgheadline2">Inspect Boot log</h3>
-<div class="outline-text-3" id="text-orgheadline2">
+<h3 id="orgheadline2"><span class="section-number-3">1.2</span> Inspect Boot log</h3>
+<div class="outline-text-3" id="text-1-2">
 <div class="org-src-container">
 
 <pre class="src src-sh">$ cat /var/run/dmesg.boot
@@ -249,8 +254,8 @@ Sys Admin Notes
 
 
 <div id="outline-container-orgheadline3" class="outline-3">
-<h3 id="orgheadline3">Modify default editor from vi to nano</h3>
-<div class="outline-text-3" id="text-orgheadline3">
+<h3 id="orgheadline3"><span class="section-number-3">1.3</span> Modify default editor from vi to nano</h3>
+<div class="outline-text-3" id="text-1-3">
 <div class="org-src-container">
 
 <pre class="src src-sh"># For C based shell
@@ -265,8 +270,8 @@ $ which nano
 
 
 <div id="outline-container-orgheadline4" class="outline-3">
-<h3 id="orgheadline4">Check disk space usage by directory</h3>
-<div class="outline-text-3" id="text-orgheadline4">
+<h3 id="orgheadline4"><span class="section-number-3">1.4</span> Check disk space usage by directory</h3>
+<div class="outline-text-3" id="text-1-4">
 <div class="org-src-container">
 
 <pre class="src src-sh">$ sudo du -hd1 /usr
@@ -277,8 +282,8 @@ $ which nano
 
 
 <div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="orgheadline5">Expand Partition to Entire Drive</h3>
-<div class="outline-text-3" id="text-orgheadline5">
+<h3 id="orgheadline5"><span class="section-number-3">1.5</span> Expand Partition to Entire Drive</h3>
+<div class="outline-text-3" id="text-1-5">
 <p>
 When a VPS is upgraded to a larger instance, the expanded drive is not 
 recognized by the OS
@@ -320,8 +325,8 @@ $ ufs:/dev/vtbd0s1
 
 
 <div id="outline-container-orgheadline6" class="outline-3">
-<h3 id="orgheadline6">Edit Crontab</h3>
-<div class="outline-text-3" id="text-orgheadline6">
+<h3 id="orgheadline6"><span class="section-number-3">1.6</span> Edit Crontab</h3>
+<div class="outline-text-3" id="text-1-6">
 <div class="org-src-container">
 
 <pre class="src src-sh">$ crontab -e
@@ -333,8 +338,8 @@ $ ufs:/dev/vtbd0s1
 
 
 <div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="orgheadline7">View traffic on network interfaces</h3>
-<div class="outline-text-3" id="text-orgheadline7">
+<h3 id="orgheadline7"><span class="section-number-3">1.7</span> View traffic on network interfaces</h3>
+<div class="outline-text-3" id="text-1-7">
 <div class="org-src-container">
 
 <pre class="src src-sh">$ systat -ifstat 1
@@ -347,22 +352,18 @@ $ ufs:/dev/vtbd0s1
 </div>
 
 
-<div id="outline-container-orgheadline9" class="outline-2">
-<h2 id="orgheadline9">Deploy Python App to FreeBSD Jail</h2>
-<div class="outline-text-2" id="text-orgheadline9">
-<ul class="org-ul">
-<li><p>
-Update pkg
-</p>
-
+<div id="outline-container-orgheadline30" class="outline-2">
+<h2 id="orgheadline30"><span class="section-number-2">2</span> Deploy Python App to FreeBSD Jail</h2>
+<div class="outline-text-2" id="text-2">
 <div class="org-src-container">
 
 <pre class="src src-sh">$ pkg update
 </pre>
-</div></li>
+</div>
 
+<ul class="org-ul">
 <li><p>
-Install Dependencies using pkg
+packages to install on new jail
 </p>
 
 <div class="org-src-container">
@@ -373,117 +374,42 @@ $ pkg install sqlite3
 $ pkg install py27-sqlite3
 $ pkg install git
 $ pkg install nano
-$ pkg install postgresql94-client # so psycopg2 installs using pip
-                                  # Need to specify version ex: 94 
+# install virtualenv
+$ pip install virtualenv
+$ pkg install postgresql-client  # so psycopg2 installs using pip
 $ pkg install nginx
+$ pkg install uwsgi  # Use pip to keep it in virutalenv
 $ pkg install py27-supervisor
 </pre>
 </div></li>
 
-<li><p>
-Install Virtualenv
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-sh">  # install virtualenv
-  $ pip install virtualenv
-
-  #END_SRC
-
-- Add SSH public key to Bitbucket or Github
-
-  So you can clone the project
-
-
-- Clone the project to your server
-
-  Ex: Create a /var/www/ directory and clone into there
-
-
-- Create a virtual env
-
-  I keep my virtualenv inside my project as venv to keep it selfcontained
-
-  #+BEGIN_SRC sh 
-  $ virtualenv --no-site-packages venv
-  # Activate virtual env (not the csh special script)
-  $ source venv/bin/activate.csh
-</pre>
-</div></li>
-</ul>
-
-
-<ul class="org-ul">
-<li><p>
-Install requirements into virtualenv using pip 
-</p>
-
-<p>
-Be sure virtual env is active 
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-sh">$ pip install -r requirements.txt
-</pre>
-</div>
-
-<ul class="org-ul">
-<li>You might get errors if you use uwsgi using pkg b/c virtualenv path
+<li>you might get errors if you use uwsgi using pkg because virtualenv path
 wont be recognized. Use pip install uwsgi and run
 venv/bin/uwsgi &#x2013;socket 127.0.0.1:8080 &#x2013;protocol=http -w receiptapp.py</li>
 <li>link:<a href="https://www.digitalocean.com/community/tutorials/how-to-deploy-python-wsgi-applications-using-uwsgi-web-server-with-nginx">https://www.digitalocean.com/community/tutorials/how-to-deploy-python-wsgi-applications-using-uwsgi-web-server-with-nginx</a></li>
-</ul></li>
 </ul>
-
-
-<ul class="org-ul">
-<li><p>
-Verify nginx is also running in jail
-</p>
-<div class="org-src-container">
-
-<pre class="src src-sh">$ service nginx status
-Cannot 'status' nginx. Set nginx_enable to YES in /etc/rc.conf or use 'onestatus' instead of 'status'.
-</pre>
 </div>
 
-<ul class="org-ul">
-<li>On a fresh install of nginx, if you get a message like that
-<ul class="org-ul">
-<li><p>
-Add nginx<sub>enable</sub>="YES" to /etc/defaults/rc.conf
-</p>
+
+<div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="orgheadline9"><span class="section-number-3">2.1</span> Create a virtual env</h3>
+<div class="outline-text-3" id="text-2-1">
 <div class="org-src-container">
 
-<pre class="src src-sh">nginx_enable="YES"
+<pre class="src src-sh">$ virtualenv --no-site-packages venv
+# Activate virtual env (not the csh special script)
+$ source venv/bin/activate.csh
 </pre>
-</div></li>
-</ul></li>
-
-<li><p>
-Verify nginx status again
-</p>
-
-<div class="org-src-container">
-
-<pre class="src src-sh">service nginx status
-nginx is not running.
-</pre>
-</div></li>
-
-<li>Start nginx</li>
-</ul>
-<ul class="org-ul">
-<li>by pointing to default nginx page in jail to verify forwarding works</li>
-</ul></li>
-</ul>
+</div>
+</div>
 </div>
 
 <div id="outline-container-orgheadline10" class="outline-3">
-<h3 id="orgheadline10">Create Postgres user and database</h3>
-<div class="outline-text-3" id="text-orgheadline10">
+<h3 id="orgheadline10"><span class="section-number-3">2.2</span> Pip install requirements after virtual env activated</h3>
+</div>
+<div id="outline-container-orgheadline11" class="outline-3">
+<h3 id="orgheadline11"><span class="section-number-3">2.3</span> Create Postgres user and database</h3>
+<div class="outline-text-3" id="text-2-3">
 <div class="org-src-container">
 
 <pre class="src src-sh"># swith to pgsql user
@@ -510,15 +436,15 @@ $ psql -U &lt;username&gt; -h &lt;hostname&gt; -d &lt;database_name&gt;
 </div>
 </div>
 
-<div id="outline-container-orgheadline11" class="outline-3">
-<h3 id="orgheadline11">Run bootstrap.py</h3>
-</div>
 <div id="outline-container-orgheadline12" class="outline-3">
-<h3 id="orgheadline12">Verify can connect to db and see tables created</h3>
+<h3 id="orgheadline12"><span class="section-number-3">2.4</span> Run bootstrap.py</h3>
 </div>
 <div id="outline-container-orgheadline13" class="outline-3">
-<h3 id="orgheadline13">Make sure app is connecting to correct database by running it locally</h3>
-<div class="outline-text-3" id="text-orgheadline13">
+<h3 id="orgheadline13"><span class="section-number-3">2.5</span> Verify can connect to db and see tables created</h3>
+</div>
+<div id="outline-container-orgheadline14" class="outline-3">
+<h3 id="orgheadline14"><span class="section-number-3">2.6</span> Make sure app is connecting to correct database by running it locally</h3>
+<div class="outline-text-3" id="text-2-6">
 <ul class="org-ul">
 <li>activate virtual env</li>
 <li>Run python app.py</li>
@@ -527,16 +453,24 @@ $ psql -U &lt;username&gt; -h &lt;hostname&gt; -d &lt;database_name&gt;
 </div>
 </div>
 
-<div id="outline-container-orgheadline14" class="outline-3">
-<h3 id="orgheadline14">Point webserver to nginx in app jail</h3>
-</div>
-
 <div id="outline-container-orgheadline15" class="outline-3">
-<h3 id="orgheadline15">Make sure supervisor is installed (py27-supervisor)</h3>
+<h3 id="orgheadline15"><span class="section-number-3">2.7</span> Point webserver to nginx in app jail</h3>
 </div>
 <div id="outline-container-orgheadline16" class="outline-3">
-<h3 id="orgheadline16">Start supervisord service</h3>
-<div class="outline-text-3" id="text-orgheadline16">
+<h3 id="orgheadline16"><span class="section-number-3">2.8</span> Verify nginx is also running in jail</h3>
+<div class="outline-text-3" id="text-2-8">
+<ul class="org-ul">
+<li>by pointing to default nginx page in jail to verify forwarding works</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline17" class="outline-3">
+<h3 id="orgheadline17"><span class="section-number-3">2.9</span> Make sure supervisor is installed (py27-supervisor)</h3>
+</div>
+<div id="outline-container-orgheadline18" class="outline-3">
+<h3 id="orgheadline18"><span class="section-number-3">2.10</span> Start supervisord service</h3>
+<div class="outline-text-3" id="text-2-10">
 <div class="org-src-container">
 
 <pre class="src src-sh">service supervisord start
@@ -545,9 +479,9 @@ $ psql -U &lt;username&gt; -h &lt;hostname&gt; -d &lt;database_name&gt;
 </div>
 </div>
 
-<div id="outline-container-orgheadline17" class="outline-3">
-<h3 id="orgheadline17">Edit supervisor.conf file in /usr/local/etc/supervisor.conf</h3>
-<div class="outline-text-3" id="text-orgheadline17">
+<div id="outline-container-orgheadline19" class="outline-3">
+<h3 id="orgheadline19"><span class="section-number-3">2.11</span> Edit supervisor.conf file in /usr/local/etc/supervisor.conf</h3>
+<div class="outline-text-3" id="text-2-11">
 <div class="org-src-container">
 
 <pre class="src src-sh">[program:uwsgi_myapp]
@@ -568,9 +502,9 @@ numprocs=5
 </div>
 </div>
 
-<div id="outline-container-orgheadline18" class="outline-3">
-<h3 id="orgheadline18">Set nginx and supervisor to start on system start</h3>
-<div class="outline-text-3" id="text-orgheadline18">
+<div id="outline-container-orgheadline20" class="outline-3">
+<h3 id="orgheadline20"><span class="section-number-3">2.12</span> Set nginx and supervisor to start on system start</h3>
+<div class="outline-text-3" id="text-2-12">
 <ul class="org-ul">
 <li>edit /etc/defaults/rc.conf to have (note the defaults b/c its in jail)</li>
 </ul>
@@ -583,9 +517,9 @@ nginx_enable="YES"
 </div>
 </div>
 
-<div id="outline-container-orgheadline19" class="outline-3">
-<h3 id="orgheadline19">Edit nginx.conf file to have this include statement in http block</h3>
-<div class="outline-text-3" id="text-orgheadline19">
+<div id="outline-container-orgheadline21" class="outline-3">
+<h3 id="orgheadline21"><span class="section-number-3">2.13</span> Edit nginx.conf file to have this include statement in http block</h3>
+<div class="outline-text-3" id="text-2-13">
 <div class="org-src-container">
 
 <pre class="src src-sh">include /usr/local/etc/nginx/conf.d/*.conf;
@@ -594,25 +528,25 @@ nginx_enable="YES"
 </div>
 </div>
 
-<div id="outline-container-orgheadline20" class="outline-3">
-<h3 id="orgheadline20">Create conf.d directory if it doesn't exist</h3>
-</div>
-<div id="outline-container-orgheadline21" class="outline-3">
-<h3 id="orgheadline21">copy nginx.conf file to <i>usr/local/etc/nginx/conf.d</i></h3>
-</div>
 <div id="outline-container-orgheadline22" class="outline-3">
-<h3 id="orgheadline22">Restart nginx, make sure no errors</h3>
+<h3 id="orgheadline22"><span class="section-number-3">2.14</span> Create conf.d directory if it doesn't exist</h3>
 </div>
 <div id="outline-container-orgheadline23" class="outline-3">
-<h3 id="orgheadline23">Verify URL works in browser</h3>
+<h3 id="orgheadline23"><span class="section-number-3">2.15</span> copy nginx.conf file to <i>usr/local/etc/nginx/conf.d</i></h3>
+</div>
+<div id="outline-container-orgheadline24" class="outline-3">
+<h3 id="orgheadline24"><span class="section-number-3">2.16</span> Restart nginx, make sure no errors</h3>
+</div>
+<div id="outline-container-orgheadline25" class="outline-3">
+<h3 id="orgheadline25"><span class="section-number-3">2.17</span> Verify URL works in browser</h3>
 </div>
 
-<div id="outline-container-orgheadline26" class="outline-3">
-<h3 id="orgheadline26">Troubleshooting</h3>
-<div class="outline-text-3" id="text-orgheadline26">
-</div><div id="outline-container-orgheadline24" class="outline-4">
-<h4 id="orgheadline24">Check log files</h4>
-<div class="outline-text-4" id="text-orgheadline24">
+<div id="outline-container-orgheadline28" class="outline-3">
+<h3 id="orgheadline28"><span class="section-number-3">2.18</span> Troubleshooting</h3>
+<div class="outline-text-3" id="text-2-18">
+</div><div id="outline-container-orgheadline26" class="outline-4">
+<h4 id="orgheadline26"><span class="section-number-4">2.18.1</span> Check log files</h4>
+<div class="outline-text-4" id="text-2-18-1">
 <ul class="org-ul">
 <li>app uwsgi log file specified in ini file first for clues</li>
 <li>check nginx error log file</li>
@@ -620,9 +554,9 @@ nginx_enable="YES"
 </div>
 </div>
 
-<div id="outline-container-orgheadline25" class="outline-4">
-<h4 id="orgheadline25">IOError: decoder jpeg not available</h4>
-<div class="outline-text-4" id="text-orgheadline25">
+<div id="outline-container-orgheadline27" class="outline-4">
+<h4 id="orgheadline27"><span class="section-number-4">2.18.2</span> IOError: decoder jpeg not available</h4>
+<div class="outline-text-4" id="text-2-18-2">
 <p>
 Use pillow instead of PIL
 Make sure dependencies for PIL/pillow are installed
@@ -667,9 +601,9 @@ Type "help", "copyright", "credits" or "license" for more information.
 </div>
 
 
-<div id="outline-container-orgheadline27" class="outline-3">
-<h3 id="orgheadline27">Reference:</h3>
-<div class="outline-text-3" id="text-orgheadline27">
+<div id="outline-container-orgheadline29" class="outline-3">
+<h3 id="orgheadline29"><span class="section-number-3">2.19</span> Reference:</h3>
+<div class="outline-text-3" id="text-2-19">
 <ul class="org-ul">
 <li><a href="https://www.srijn.net/notes/django-uwsgi-nginx-on-freebsd.html">https://www.srijn.net/notes/django-uwsgi-nginx-on-freebsd.html</a></li>
 
@@ -683,12 +617,12 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 
 
-<div id="outline-container-orgheadline32" class="outline-2">
-<h2 id="orgheadline32">FreeBSD Jails</h2>
-<div class="outline-text-2" id="text-orgheadline32">
-</div><div id="outline-container-orgheadline28" class="outline-3">
-<h3 id="orgheadline28">Manage Jails using ezjail-admin</h3>
-<div class="outline-text-3" id="text-orgheadline28">
+<div id="outline-container-orgheadline35" class="outline-2">
+<h2 id="orgheadline35"><span class="section-number-2">3</span> FreeBSD Jails</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-orgheadline31" class="outline-3">
+<h3 id="orgheadline31"><span class="section-number-3">3.1</span> Manage Jails using ezjail-admin</h3>
+<div class="outline-text-3" id="text-3-1">
 <hr  />
 <div class="org-src-container">
 
@@ -713,17 +647,17 @@ $ sudo jexec 1 hostname
 </div>
 
 
-<div id="outline-container-orgheadline29" class="outline-3">
-<h3 id="orgheadline29">Create new Jail</h3>
-<div class="outline-text-3" id="text-orgheadline29">
+<div id="outline-container-orgheadline33" class="outline-3">
+<h3 id="orgheadline33"><span class="section-number-3">3.2</span> Create new Jail</h3>
+<div class="outline-text-3" id="text-3-2">
 <p>
 A condensed version of <a href="http://www.bsdnow.tv/tutorials/jails">bsdnow</a>
 </p>
 </div>
 
-<div id="outline-container-orgheadline30" class="outline-4">
-<h4 id="orgheadline30">Create an ip address for jail</h4>
-<div class="outline-text-4" id="text-orgheadline30">
+<div id="outline-container-orgheadline32" class="outline-4">
+<h4 id="orgheadline32"><span class="section-number-4">3.2.1</span> Create an ip address for jail</h4>
+<div class="outline-text-4" id="text-3-2-1">
 <ul class="org-ul">
 <li><p>
 Find an ipaddress to set for jail
@@ -808,9 +742,9 @@ To enable networking inside jail, copy the resolv.conf file
 </div>
 
 
-<div id="outline-container-orgheadline31" class="outline-3">
-<h3 id="orgheadline31">Enable networking in jail</h3>
-<div class="outline-text-3" id="text-orgheadline31">
+<div id="outline-container-orgheadline34" class="outline-3">
+<h3 id="orgheadline34"><span class="section-number-3">3.3</span> Enable networking in jail</h3>
+<div class="outline-text-3" id="text-3-3">
 <hr  />
 <div class="org-src-container">
 
@@ -823,14 +757,14 @@ $ cp /etc/resolv.conf /usr/jails/&lt;jailname&gt;/etc/
 </div>
 
 
-<div id="outline-container-orgheadline33" class="outline-2">
-<h2 id="orgheadline33">Using fetch fails with ssl auth error</h2>
-<div class="outline-text-2" id="text-orgheadline33">
+<div id="outline-container-orgheadline37" class="outline-2">
+<h2 id="orgheadline37"><span class="section-number-2">4</span> Using fetch fails with ssl auth error</h2>
+<div class="outline-text-2" id="text-4">
 <hr  />
 </div>
-<div id="outline-container-orgheadline34" class="outline-3">
-<h3 id="orgheadline34">Reason: Certificate verification failed</h3>
-<div class="outline-text-3" id="text-orgheadline34">
+<div id="outline-container-orgheadline36" class="outline-3">
+<h3 id="orgheadline36"><span class="section-number-3">4.1</span> Reason: Certificate verification failed</h3>
+<div class="outline-text-3" id="text-4-1">
 <div class="org-src-container">
 
 <pre class="src src-sh"># Install ca root
@@ -845,9 +779,9 @@ $ ln -s /usr/local/share/certs/ca-root-nss.crt /etc/ssl/cert.pem
 </div>
 
 
-<div id="outline-container-orgheadline35" class="outline-2">
-<h2 id="orgheadline35">Starting PostGres in jail</h2>
-<div class="outline-text-2" id="text-orgheadline35">
+<div id="outline-container-orgheadline38" class="outline-2">
+<h2 id="orgheadline38"><span class="section-number-2">5</span> Starting PostGres in jail</h2>
+<div class="outline-text-2" id="text-5">
 <hr  />
 <div class="org-src-container">
 
@@ -859,9 +793,9 @@ $ pg_ctl -D /usr/local/pgsql/data initdb /usr/local/bin/pg_ctl -D /usr/local/pgs
 </div>
 
 
-<div id="outline-container-orgheadline36" class="outline-2">
-<h2 id="orgheadline36">Running Ghost</h2>
-<div class="outline-text-2" id="text-orgheadline36">
+<div id="outline-container-orgheadline39" class="outline-2">
+<h2 id="orgheadline39"><span class="section-number-2">6</span> Running Ghost</h2>
+<div class="outline-text-2" id="text-6">
 <div class="org-src-container">
 
 <pre class="src src-sh"># set node env
@@ -883,9 +817,9 @@ $ forever start index.js
 
 
 
-<div id="outline-container-orgheadline37" class="outline-2">
-<h2 id="orgheadline37">Jenkins</h2>
-<div class="outline-text-2" id="text-orgheadline37">
+<div id="outline-container-orgheadline40" class="outline-2">
+<h2 id="orgheadline40"><span class="section-number-2">7</span> Jenkins</h2>
+<div class="outline-text-2" id="text-7">
 <ul class="org-ul">
 <li><p>
 <a href="https://wiki.jenkins-ci.org/display/JENKINS/FreeBSD">https://wiki.jenkins-ci.org/display/JENKINS/FreeBSD</a>
@@ -898,9 +832,9 @@ Setting up Jenkins on freebsd
 </div>
 </div>
 
-<div id="outline-container-orgheadline38" class="outline-2">
-<h2 id="orgheadline38">References</h2>
-<div class="outline-text-2" id="text-orgheadline38">
+<div id="outline-container-orgheadline41" class="outline-2">
+<h2 id="orgheadline41"><span class="section-number-2">8</span> References</h2>
+<div class="outline-text-2" id="text-8">
 <hr  />
 <ul class="org-ul">
 <li><a href="http://www.bsdnow.tv/tutorials/jails">http://www.bsdnow.tv/tutorials/jails</a></li>
@@ -908,6 +842,15 @@ Setting up Jenkins on freebsd
 <li><a href="https://discuss.vultr.com/discussion/432/adding-more-storage/p1">https://discuss.vultr.com/discussion/432/adding-more-storage/p1</a></li>
 <li><a href="https://forums.freebsd.org/threads/mountroot.46296/">https://forums.freebsd.org/threads/mountroot.46296/</a></li>
 </ul>
+
+
+
+
+
+
+
+
+
 
 
 
