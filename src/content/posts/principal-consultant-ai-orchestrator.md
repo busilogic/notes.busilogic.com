@@ -72,13 +72,13 @@ That single command gives me the complete picture across everything I'm running.
 
 Why GitHub specifically: it's where my work already lives. Commits, PRs, infrastructure changes — it's all there. Keeping the operational layer in the same place means I can link an action item directly to a commit or a PR. Context stays connected.
 
-## The daily view
+## The Daily View
 
 The issues are my source of truth. I also maintain a short daily view — a `today.md` that gets refreshed each morning. It's the things I'm actually going to work on today, pulled from the issues, trimmed to what matters right now.
 
 The orchestrator handles the refresh. I read it, adjust if needed, and start working.
 
-## What this actually unlocks
+## What This Actually Unlocks
 
 **Nothing drops.** When six things are moving simultaneously, the failure mode isn't being busy — it's forgetting. The inbox catches everything before it disappears into a conversation thread or a mental note I'll lose by afternoon.
 
