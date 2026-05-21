@@ -2,7 +2,7 @@
 title: "My AI Stunt Double: How I Run Six Engagements Without Losing the Thread"
 date: 2026-05-20
 description: "A private GitHub repo, a plain-text inbox, and Claude as orchestrator. The personal version of the system I recommend to teams."
-draft: true
+draft: false
 ---
 
 I wrote recently about [using GitHub as your team's AI memory](./github-as-nervous-system). The argument was structural: when context lives in the repo instead of someone's head, it compounds instead of evaporating.
